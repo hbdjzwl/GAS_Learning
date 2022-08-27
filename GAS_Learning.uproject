@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{7B1CAD2C-48B2-357F-0FC8-2497F65286F0}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "GAS_Learning",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"GameplayAbilities",
+				"Engine"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
+		}
+	]
+}
