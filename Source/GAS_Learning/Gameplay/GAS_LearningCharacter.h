@@ -9,6 +9,15 @@
 #include "../AttributeSet/GAS_AttributeSet.h"
 #include "GAS_LearningCharacter.generated.h"
 
+USTRUCT(BlueprintType)
+struct FMyTestStruct
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 Value;
+};
+
 UCLASS(config=Game)
 class AGAS_LearningCharacter : public ACharacter , public IAbilitySystemInterface
 {
@@ -22,6 +31,14 @@ class AGAS_LearningCharacter : public ACharacter , public IAbilitySystemInterfac
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 public:
+
+	UFUNCTION(BlueprintCallable)
+	void TestFunction(FMyTestStruct& TagContainer)
+	{
+
+	}
+
+
 	AGAS_LearningCharacter();
 
 
