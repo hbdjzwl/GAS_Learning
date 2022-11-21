@@ -11,6 +11,33 @@
 #include "Abilities/GameplayAbility_CharacterJump.h"
 #include "GAS_Learning/GA/CommonType.h"
 
+void AGAS_LearningCharacter::GetValue1(TArray<int32>& Array)
+{
+	for (const auto& r : a.Values)
+	{
+		Array.Add(r);
+	}
+}
+
+void AGAS_LearningCharacter::GetValue(FMyTestStruct& MyTestStruct)
+{
+	for (const auto& r : a.Values)
+	{
+		MyTestStruct.Values.Add(r);
+	}
+}
+
+void AGAS_LearningCharacter::AddValue(int32 Value)
+{
+	a.Values.AddUnique(MoveTemp(Value));
+}
+
+void AGAS_LearningCharacter::RemoveValue(int32 Index)
+{
+	a.Values.RemoveAt(0);
+}
+
+
 //////////////////////////////////////////////////////////////////////////
 // AGAS_LearningCharacter
 
@@ -68,6 +95,10 @@ void AGAS_LearningCharacter::BeginPlay()
 	AttributeSet->InitHealth(100);
 	AttributeSet->InitMaxHealth(150);
 	AttributeSet->InitSpeed(400);
+	AttributeSet->InitPhysicalDamage(10);
+	AttributeSet->InitPhysicalDamageCoefficient(1);
+
+
 	GetCharacterMovement()->MaxWalkSpeed = AttributeSet->GetSpeed();
 }
 

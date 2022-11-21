@@ -15,7 +15,7 @@ struct FMyTestStruct
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(BlueprintReadWrite)
-	int32 Value;
+	TArray<int32> Values;
 };
 
 UCLASS(config=Game)
@@ -33,10 +33,23 @@ class AGAS_LearningCharacter : public ACharacter , public IAbilitySystemInterfac
 public:
 
 	UFUNCTION(BlueprintCallable)
-	void TestFunction(FMyTestStruct& TagContainer)
-	{
+	void GetValue1(TArray<int32>& Array);
 
-	}
+	UFUNCTION(BlueprintCallable)
+	void GetValue(FMyTestStruct& MyTestStruct);
+
+	UFUNCTION(BlueprintCallable)
+	void AddValue(int32 Value);
+
+	UFUNCTION(BlueprintCallable)
+	void RemoveValue(int32 Index);
+
+	FMyTestStruct a;
+
+
+
+
+
 
 
 	AGAS_LearningCharacter();
