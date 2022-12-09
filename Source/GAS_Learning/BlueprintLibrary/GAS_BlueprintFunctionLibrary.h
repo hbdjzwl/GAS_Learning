@@ -30,7 +30,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "SetTagCount"))
 	static int32 BPSetTagCount(UAbilitySystemComponent* ASC, FGameplayTag Tag, int32 NewCount);
 
-
-
+	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "SetReplicationMode"))
+	static void BPSetReplicationMode(UAbilitySystemComponent* ASC,EGameplayEffectReplicationMode NewReplicationMode);
 
 };

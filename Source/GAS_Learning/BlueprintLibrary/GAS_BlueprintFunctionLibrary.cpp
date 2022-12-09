@@ -25,3 +25,8 @@ int32 UGAS_BlueprintFunctionLibrary::BPSetTagCount(UAbilitySystemComponent* ASC,
 	ASC->SetLooseGameplayTagCount(Tag, NewCount);
 	return ASC->GetTagCount(Tag);
 }
+
+void UGAS_BlueprintFunctionLibrary::BPSetReplicationMode(UAbilitySystemComponent* ASC, EGameplayEffectReplicationMode NewReplicationMode)
+{
+	ASC->SetReplicationMode(NewReplicationMode);
+}
