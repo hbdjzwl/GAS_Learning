@@ -2,6 +2,7 @@
 
 
 #include "GAS_BlueprintFunctionLibrary.h"
+//#include "Engine/Engine.h"
 
 int32 UGAS_BlueprintFunctionLibrary::BPAddLooseGameplayTag(UAbilitySystemComponent* ASC, FGameplayTag Tag)
 {
@@ -30,3 +31,10 @@ void UGAS_BlueprintFunctionLibrary::BPSetReplicationMode(UAbilitySystemComponent
 {
 	ASC->SetReplicationMode(NewReplicationMode);
 }
+
+FString UGAS_BlueprintFunctionLibrary::BPPrintActiveGameplayEffectHandle(FActiveGameplayEffectHandle Handle, float TimeToDisplay)
+{
+	//GEngine->AddOnScreenDebugMessage(-1,TimeToDisplay,FColor::Green, Handle.ToString());
+	return Handle.ToString();
+}
+

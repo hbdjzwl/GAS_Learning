@@ -33,4 +33,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "SetReplicationMode"))
 	static void BPSetReplicationMode(UAbilitySystemComponent* ASC,EGameplayEffectReplicationMode NewReplicationMode);
 
+	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "PrintActiveGameplayEffectHandle"))
+	static FString BPPrintActiveGameplayEffectHandle (FActiveGameplayEffectHandle Handle, float TimeToDisplay = 2.f);
 };
