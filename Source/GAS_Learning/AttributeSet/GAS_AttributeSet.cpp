@@ -5,6 +5,7 @@
 
 #include "GameFramework/Character.h"
 #include "Net/UnrealNetwork.h"
+#include "GameplayEffectExtension.h"
 
 UGAS_AttributeSet::UGAS_AttributeSet()
 {
@@ -33,7 +34,11 @@ void UGAS_AttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 {
 	Super::PostGameplayEffectExecute(Data);
 	UE_LOG(LogTemp,Warning,TEXT("AH::PostGameplayEffectExecute ----- %s"),*UEnum::GetValueAsString(TEXT("Engine.ENetRole"), GetOwningActor()->GetLocalRole()));
-	
+	if (Data.EvaluatedData.Attribute == GetDamageAttribute())
+	{
+		SetHealth(GetHealth() - GetDamage());
+		SetDamage(0.f);
+	}
 }
 
 void UGAS_AttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth)

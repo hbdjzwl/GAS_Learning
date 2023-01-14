@@ -11,14 +11,14 @@ struct SDmageStatics
 	DECLARE_ATTRIBUTE_CAPTUREDEF(PhysicalDamage);
 	DECLARE_ATTRIBUTE_CAPTUREDEF(PhysicalDamageCoefficient);
 	DECLARE_ATTRIBUTE_CAPTUREDEF(Armor);
-	DECLARE_ATTRIBUTE_CAPTUREDEF(Health)
+	DECLARE_ATTRIBUTE_CAPTUREDEF(Damage)
 
 	SDmageStatics()
 	{
 		DEFINE_ATTRIBUTE_CAPTUREDEF(UGAS_AttributeSet, PhysicalDamage, Source, true);
 		DEFINE_ATTRIBUTE_CAPTUREDEF(UGAS_AttributeSet, PhysicalDamageCoefficient, Source, true);
 		DEFINE_ATTRIBUTE_CAPTUREDEF(UGAS_AttributeSet, Armor, Target, true);
-		DEFINE_ATTRIBUTE_CAPTUREDEF(UGAS_AttributeSet, Health, Target, true);
+		DEFINE_ATTRIBUTE_CAPTUREDEF(UGAS_AttributeSet, Damage, Source, true);
 	}
 };
 
@@ -34,7 +34,7 @@ UCustomExecutionCalculation::UCustomExecutionCalculation()
 	RelevantAttributesToCapture.Add(DamageStatics().PhysicalDamageDef);
 	RelevantAttributesToCapture.Add(DamageStatics().PhysicalDamageCoefficientDef);
 	RelevantAttributesToCapture.Add(DamageStatics().ArmorDef);
-	RelevantAttributesToCapture.Add(DamageStatics().HealthDef);
+	RelevantAttributesToCapture.Add(DamageStatics().DamageDef);
 }
 //BlueprintNativeEvent
 void UCustomExecutionCalculation::Execute_Implementation(const FGameplayEffectCustomExecutionParameters& ExecutionParams,
@@ -73,7 +73,7 @@ void UCustomExecutionCalculation::Execute_Implementation(const FGameplayEffectCu
 	if (MitigatedDamage > 0.0f)
 	{
 		OutExecutionOutput.AddOutputModifier(
-			FGameplayModifierEvaluatedData(DamageStatics().HealthProperty, EGameplayModOp::Additive, -MitigatedDamage));
+			FGameplayModifierEvaluatedData(DamageStatics().DamageProperty, EGameplayModOp::Additive, MitigatedDamage));
 
 // 		OutExecutionOutput.AddOutputModifier(
 // 			FGameplayModifierEvaluatedData(DamageStatics().ArmorProperty, EGameplayModOp::Additive, -10.0f));
