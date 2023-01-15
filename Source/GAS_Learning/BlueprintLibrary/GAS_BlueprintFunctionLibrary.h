@@ -35,4 +35,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "PrintActiveGameplayEffectHandle"))
 	static FString BPPrintActiveGameplayEffectHandle (FActiveGameplayEffectHandle Handle, float TimeToDisplay = 2.f);
+
+	UFUNCTION(BlueprintPure, Category = "ASC", meta = (DisplayName = "GetCurrentPredictionKeyStatus"))
+	static FString GetCurrentPredictionKeyStatus(UAbilitySystemComponent* AbilitySystemComponent);
+
 };

@@ -38,3 +38,8 @@ FString UGAS_BlueprintFunctionLibrary::BPPrintActiveGameplayEffectHandle(FActive
 	return Handle.ToString();
 }
 
+FString UGAS_BlueprintFunctionLibrary::GetCurrentPredictionKeyStatus(UAbilitySystemComponent* AbilitySystemComponent)
+{
+	return AbilitySystemComponent->ScopedPredictionKey.ToString() + " is valid for more prediction: " + (AbilitySystemComponent->ScopedPredictionKey.IsValidForMorePrediction() ? TEXT("true") : TEXT("false"));
+}
+
