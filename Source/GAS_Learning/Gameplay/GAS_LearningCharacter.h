@@ -60,8 +60,13 @@ public:
 	
 
 	UFUNCTION(BlueprintCallable)
-	void GiveAbility(TSubclassOf<UGameplayAbility> InGAClass);
+	FGameplayAbilitySpecHandle GiveAbility(TSubclassOf<UGameplayAbility> InGAClass);
 	
+	UFUNCTION(BlueprintCallable)
+	void UpdateAbilityLevel(const FGameplayAbilitySpecHandle& Handle, int32 NewLevel);
+	
+	
+
 	virtual  void BeginPlay() override;
 
 	//当Character被服务器控制时，初始化服务器的GAS组件。

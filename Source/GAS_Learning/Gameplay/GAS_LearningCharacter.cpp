@@ -81,11 +81,20 @@ AGAS_LearningCharacter::AGAS_LearningCharacter()
 	AttributeSet = CreateDefaultSubobject<UGAS_AttributeSet>("AttributeSet");
 }
 
-void AGAS_LearningCharacter::GiveAbility(TSubclassOf<UGameplayAbility> InGAClass)
+FGameplayAbilitySpecHandle AGAS_LearningCharacter::GiveAbility(TSubclassOf<UGameplayAbility> InGAClass)
 {
-	AbilitySystem->GiveAbility(FGameplayAbilitySpec(InGAClass));
+	return AbilitySystem->GiveAbility(FGameplayAbilitySpec(InGAClass));
 }
 
+
+void AGAS_LearningCharacter::UpdateAbilityLevel(const FGameplayAbilitySpecHandle& Handle,int32 NewLevel)
+{
+	if (FGameplayAbilitySpec* Spec = AbilitySystem->FindAbilitySpecFromHandle(Handle))
+	{
+		Spec->Level = NewLevel;
+		AbilitySystem->MarkAbilitySpecDirty(*Spec);	//标记Dirty用于立即同步
+	}
+}
 //	bool TryActivateAbility(FGameplayAbilitySpecHandle AbilityToActivate, bool bAllowRemoteActivation = true);
 
 

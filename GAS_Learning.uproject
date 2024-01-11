@@ -21,7 +21,7 @@
 		},
 		{
 			"Name": "GASAttachEditor",
-			"Enabled": true,
+			"Enabled": false,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/faabce60b69a4f38ac1242953ab97b14"
 		}
 	]
