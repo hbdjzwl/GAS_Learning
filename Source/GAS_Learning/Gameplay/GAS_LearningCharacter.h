@@ -17,6 +17,14 @@ struct FMyTestStruct
 	UPROPERTY(BlueprintReadWrite)
 	TArray<int32> Values;
 };
+USTRUCT(BlueprintType)
+struct FMyTestRef
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 Value;
+};
 
 UCLASS(config=Game)
 class AGAS_LearningCharacter : public ACharacter , public IAbilitySystemInterface
@@ -133,5 +141,10 @@ public:
 	UPROPERTY(EditDefaultsOnly,meta = (DisplayName = "被动技能"))
 	TArray<TSubclassOf<UGameplayAbility>> PassiveSkill;
 
+	UFUNCTION(BlueprintCallable)
+		UPARAM(ref) FMyTestRef& GetValueRef();
+
+	UPROPERTY(BlueprintReadOnly)
+	FMyTestRef RefValue;
 };
 

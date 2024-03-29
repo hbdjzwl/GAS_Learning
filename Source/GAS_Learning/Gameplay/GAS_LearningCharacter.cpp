@@ -109,6 +109,7 @@ void AGAS_LearningCharacter::BeginPlay()
 
 
 	GetCharacterMovement()->MaxWalkSpeed = AttributeSet->GetSpeed();
+
 }
 
 void AGAS_LearningCharacter::PossessedBy(AController* NewController)
@@ -174,6 +175,12 @@ void AGAS_LearningCharacter::Sever_InitializBindInputAbility_Implementation()
 			}
 		}
 	}
+}
+
+
+FMyTestRef& AGAS_LearningCharacter::GetValueRef()
+{
+	return RefValue;
 }
 
 void AGAS_LearningCharacter::Sever_InitializPassiveSkill_Implementation()

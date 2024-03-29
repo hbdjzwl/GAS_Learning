@@ -43,3 +43,54 @@ FString UGAS_BlueprintFunctionLibrary::GetCurrentPredictionKeyStatus(UAbilitySys
 	return AbilitySystemComponent->ScopedPredictionKey.ToString() + " is valid for more prediction: " + (AbilitySystemComponent->ScopedPredictionKey.IsValidForMorePrediction() ? TEXT("true") : TEXT("false"));
 }
 
+FGameplayAbilitySpecHandle UGAS_BlueprintFunctionLibrary::FindAbilitySpecHanleFromClass(UAbilitySystemComponent* AbilitySystemComponent, TSubclassOf<UGameplayAbility> InAbilityClass)
+{
+	if (AbilitySystemComponent)
+	{
+		if (FGameplayAbilitySpec* Spec = AbilitySystemComponent->FindAbilitySpecFromClass(InAbilityClass))
+		{
+			return Spec->Handle;
+		}
+
+	}
+	return FGameplayAbilitySpecHandle();
+}
+
+
+FGameplayAbilitySpecHandle UGAS_BlueprintFunctionLibrary::FindAbilitySpecHandleFromInputID(UAbilitySystemComponent* AbilitySystemComponent, int32 InputID)
+{
+	if (AbilitySystemComponent)
+	{
+		if (FGameplayAbilitySpec* Spec = AbilitySystemComponent->FindAbilitySpecFromInputID(InputID))
+		{
+			return Spec->Handle;
+		}
+	}
+	return FGameplayAbilitySpecHandle();
+
+}
+
+UGameplayAbility* UGAS_BlueprintFunctionLibrary::GetPrimaryAbilityInstanceFromHandle(UAbilitySystemComponent* AbilitySystemComponent, FGameplayAbilitySpecHandle Handle)
+{
+	if (AbilitySystemComponent)
+	{
+		if (FGameplayAbilitySpec* AbilitySpec = AbilitySystemComponent->FindAbilitySpecFromHandle(Handle))
+		{
+			return AbilitySpec->GetPrimaryInstance();
+		}
+	}
+	return nullptr;
+}
+
+UGameplayAbility* UGAS_BlueprintFunctionLibrary::GetPrimaryAbilityInstanceFromClass(UAbilitySystemComponent* AbilitySystemComponent, TSubclassOf<UGameplayAbility> InAbilityClass)
+{
+	if (AbilitySystemComponent)
+	{
+		if (FGameplayAbilitySpec* AbilitySpec = AbilitySystemComponent->FindAbilitySpecFromClass(InAbilityClass))
+		{
+			return AbilitySpec->GetPrimaryInstance();
+		}
+	}
+	return nullptr;
+}
+

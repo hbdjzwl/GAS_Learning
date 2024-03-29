@@ -18,25 +18,42 @@ class GAS_LEARNING_API UGAS_BlueprintFunctionLibrary : public UBlueprintFunction
 	GENERATED_BODY()
 public:
 	/*----------------------- Tag -------------------------*/
-	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "AddLooseGameplayTag"))
+	UFUNCTION(BlueprintCallable, Category = "Ability", meta = (DisplayName = "AddLooseGameplayTag"))
 	static int32 BPAddLooseGameplayTag(UAbilitySystemComponent* ASC, FGameplayTag Tag);
 
-	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "RemoveLooseGameplayTag"))
+	UFUNCTION(BlueprintCallable, Category = "Ability", meta = (DisplayName = "RemoveLooseGameplayTag"))
 	static int32 BPRemoveLooseGameplayTag(UAbilitySystemComponent* ASC, FGameplayTag Tag);
 
-	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "GetTagCount"))
+	UFUNCTION(BlueprintCallable, Category = "Ability", meta = (DisplayName = "GetTagCount"))
 	static int32 BPGetTagCount(UAbilitySystemComponent* ASC, FGameplayTag Tag);
 
-	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "SetTagCount"))
+	UFUNCTION(BlueprintCallable, Category = "Ability", meta = (DisplayName = "SetTagCount"))
 	static int32 BPSetTagCount(UAbilitySystemComponent* ASC, FGameplayTag Tag, int32 NewCount);
 
-	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "SetReplicationMode"))
+	UFUNCTION(BlueprintCallable, Category = "Ability", meta = (DisplayName = "SetReplicationMode"))
 	static void BPSetReplicationMode(UAbilitySystemComponent* ASC,EGameplayEffectReplicationMode NewReplicationMode);
 
-	UFUNCTION(BlueprintCallable, Category = "ASC", meta = (DisplayName = "PrintActiveGameplayEffectHandle"))
+
+
+	/*----------------------- GA -------------------------*/
+
+	UFUNCTION(BlueprintCallable, Category = "Ability", meta = (DisplayName = "PrintActiveGameplayEffectHandle"))
 	static FString BPPrintActiveGameplayEffectHandle (FActiveGameplayEffectHandle Handle, float TimeToDisplay = 2.f);
 
-	UFUNCTION(BlueprintPure, Category = "ASC", meta = (DisplayName = "GetCurrentPredictionKeyStatus"))
+	UFUNCTION(BlueprintPure, Category = "Ability", meta = (DisplayName = "GetCurrentPredictionKeyStatus"))
 	static FString GetCurrentPredictionKeyStatus(UAbilitySystemComponent* AbilitySystemComponent);
 
+
+	UFUNCTION(BlueprintPure, Category = "Ability")
+	static FGameplayAbilitySpecHandle FindAbilitySpecHanleFromClass(UAbilitySystemComponent* AbilitySystemComponent,TSubclassOf<UGameplayAbility> InAbilityClass);
+
+	UFUNCTION(BlueprintPure, Category = "Ability")
+	static FGameplayAbilitySpecHandle FindAbilitySpecHandleFromInputID(UAbilitySystemComponent* AbilitySystemComponent, int32 InputID);
+
+
+	UFUNCTION(BlueprintCallable, Category = "Ability")
+	static UGameplayAbility* GetPrimaryAbilityInstanceFromHandle(UAbilitySystemComponent* AbilitySystemComponent, FGameplayAbilitySpecHandle Handle);
+
+	UFUNCTION(BlueprintCallable, Category = "Ability")
+	static UGameplayAbility* GetPrimaryAbilityInstanceFromClass(UAbilitySystemComponent* AbilitySystemComponent, TSubclassOf<UGameplayAbility> InAbilityClass);
 };

@@ -31,3 +31,4 @@ struct FBindInputID: public FTableRowBase
 	UPROPERTY(BlueprintReadOnly,EditAnywhere)
 	TSubclassOf<class UGameplayAbility> SkillClass;
 };
+
