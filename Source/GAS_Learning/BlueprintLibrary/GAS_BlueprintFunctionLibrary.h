@@ -62,5 +62,5 @@ public:
 	static FGameplayAbilitySpecHandle GetCurrentAbilitySpecHandle(UGameplayAbility* GameplayAbility);
 
 	UFUNCTION(BlueprintPure, Category = "Ability")
-	static FString GetCurrentAbilitySpecHandle(FGameplayAbilitySpecHandle GameplayAbilitySpecHandle);
+	static FString AbilitySpecHandleToString(FGameplayAbilitySpecHandle GameplayAbilitySpecHandle);
 };

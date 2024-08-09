@@ -103,7 +103,7 @@ FGameplayAbilitySpecHandle UGAS_BlueprintFunctionLibrary::GetCurrentAbilitySpecH
 	return FGameplayAbilitySpecHandle();
 }
 
-FString UGAS_BlueprintFunctionLibrary::GetCurrentAbilitySpecHandle(FGameplayAbilitySpecHandle GameplayAbilitySpecHandle)
+FString UGAS_BlueprintFunctionLibrary::AbilitySpecHandleToString(FGameplayAbilitySpecHandle GameplayAbilitySpecHandle)
 {
 	return GameplayAbilitySpecHandle.ToString();
 }
