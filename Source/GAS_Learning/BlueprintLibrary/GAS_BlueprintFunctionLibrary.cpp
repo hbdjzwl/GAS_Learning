@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "GAS_BlueprintFunctionLibrary.h"
@@ -92,5 +92,19 @@ UGameplayAbility* UGAS_BlueprintFunctionLibrary::GetPrimaryAbilityInstanceFromCl
 		}
 	}
 	return nullptr;
+}
+
+FGameplayAbilitySpecHandle UGAS_BlueprintFunctionLibrary::GetCurrentAbilitySpecHandle(UGameplayAbility* GameplayAbility)
+{
+	if (GameplayAbility)
+	{
+		return GameplayAbility->GetCurrentAbilitySpecHandle();
+	}
+	return FGameplayAbilitySpecHandle();
+}
+
+FString UGAS_BlueprintFunctionLibrary::GetCurrentAbilitySpecHandle(FGameplayAbilitySpecHandle GameplayAbilitySpecHandle)
+{
+	return GameplayAbilitySpecHandle.ToString();
 }
 

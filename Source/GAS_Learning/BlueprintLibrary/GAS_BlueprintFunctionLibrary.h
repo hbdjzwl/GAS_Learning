@@ -1,10 +1,11 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include <AbilitySystemComponent.h>
+#include "../../../../../../UnrealEngine/UnrealEngine-4.27-plus/Engine/Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Public/Abilities/GameplayAbility.h"
 #include "GAS_BlueprintFunctionLibrary.generated.h"
 
 
@@ -56,4 +57,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Ability")
 	static UGameplayAbility* GetPrimaryAbilityInstanceFromClass(UAbilitySystemComponent* AbilitySystemComponent, TSubclassOf<UGameplayAbility> InAbilityClass);
+
+	UFUNCTION(BlueprintCallable, Category = "Ability")
+	static FGameplayAbilitySpecHandle GetCurrentAbilitySpecHandle(UGameplayAbility* GameplayAbility);
+
+	UFUNCTION(BlueprintPure, Category = "Ability")
+	static FString GetCurrentAbilitySpecHandle(FGameplayAbilitySpecHandle GameplayAbilitySpecHandle);
 };
