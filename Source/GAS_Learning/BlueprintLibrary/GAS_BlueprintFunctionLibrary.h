@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include <AbilitySystemComponent.h>
-#include "../../../../../../UnrealEngine/UnrealEngine-4.27-plus/Engine/Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Public/Abilities/GameplayAbility.h"
+#include "Abilities/GameplayAbility.h"
 #include "GAS_BlueprintFunctionLibrary.generated.h"
 
 
